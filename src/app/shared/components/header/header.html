@@ -1,0 +1,21 @@
+<header class="topbar">
+  <div class="nav-content">
+    <div class="brand">
+      <img src="logoWC.jpg" alt="Logo Álbum" class="logo-img">
+      <div class="info">
+        <h1 class="title">{{ service.fileName }}</h1>
+        <span class="status">{{ service.totalObtained() }} / 670 coletadas</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="menu-btn" aria-label="Menu">
+        <span class="hamburger-icon">&#9776;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="progress-container">
+    <div class="progress-bar" [style.width.%]="(service.totalObtained() / 670) * 100"></div>
+  </div>
+</header>

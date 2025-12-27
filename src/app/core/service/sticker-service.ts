@@ -1,11 +1,11 @@
-import {Injectable, signal} from '@angular/core';
+import {computed, Injectable, signal} from '@angular/core';
 import {StickerModel} from '../../data/models/sticker-model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StickerService {
-
+  public fileName: string = "Meu Álbum";
   private readonly KEY = 'sticker_album';
 
   // 1. Criamos o Signal privado que guarda o estado
@@ -38,6 +38,18 @@ export class StickerService {
       this.save();
     }
   }
+
+  // Calcula o total de figurinhas marcadas como 'has'
+  public totalObtained = computed(() =>
+    this.stickersSignal().filter(s => s.has).length
+  );
+
+  // Calcula a porcentagem para a barra de progresso (opcional mas legal)
+  public percentageCompleted = computed(() => {
+    const total = this.stickersSignal().length;
+    if (total === 0) return 0;
+    return (this.totalObtained() / total) * 100;
+  });
 
   public save() {
     // 4. Para ler o valor de um Signal, usamos os parênteses ()
@@ -88,6 +100,7 @@ export class StickerService {
     );
 
     this.stickersSignal.set(cleanAlbum); // Atualiza o Signal
+    this.fileName = "Meu Álbum";
     this.save(); // Salva no LocalStorage
   }
 
@@ -113,4 +126,5 @@ export class StickerService {
       alert('O arquivo importado é inválido.');
     }
   }
+
 }
