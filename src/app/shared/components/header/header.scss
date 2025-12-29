@@ -13,7 +13,7 @@
   left             : 0;
   z-index          : 1000;
   width            : 100%;
-  background-image : linear-gradient(to left, #7600ad, #3D005AFF, #170a55);
+  background-image : linear-gradient(to left, #6b009e, #3D005AFF, #170a55);
   backdrop-filter  : blur(10px);
   border-bottom    : 1px solid #eee;
   box-shadow       : 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@
     display         : flex;
     justify-content : space-between;
     align-items     : center;
-    max-width       : 480px;
+    max-width       : 470px;
     margin          : 0 auto;
     padding         : 1rem; // Um padding interno para o conteúdo não colar no vidro
   }
@@ -78,7 +78,7 @@
 {
   background    : none;
   cursor        : pointer;
-  font-size     : 2.5rem;
+  font-size     : 1rem;
   border        : none;
   border-radius : 8px;
   transition    : background 0.2s;
@@ -113,3 +113,13 @@
   }
 }
 
+@media screen and (max-width : 481px)
+{
+  .topbar
+  {
+    .nav-content
+    {
+      max-width : 85%;
+    }
+  }
+}

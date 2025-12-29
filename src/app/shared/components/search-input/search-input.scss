@@ -1,0 +1,54 @@
+:host
+{
+  grid-column : span 5; /* Garante que o componente Angular ocupe a linha toda */
+  margin-top  : 1rem;
+  --inter     : "Inter", sans-serif;
+  --roboto    : "Roboto", sans-serif;
+}
+
+.containerInputSearch input
+{
+  width          : 100%;
+  padding        : 0.8rem 2.5rem;
+  border-radius  : 0.5rem;
+  border         : 1px solid #ccc;
+  box-sizing     : border-box;
+  font-size      : 1rem;
+  color          : #444444;
+  text-transform : capitalize;
+  font-family    : var(--roboto);
+  font-weight    : 400;
+
+  &:focus
+  {
+    outline : 1px solid rgb(91, 91, 233);
+  }
+}
+
+.mag
+{
+  position    : absolute;
+  margin-top  : 0.5rem;
+  margin-left : 0.45rem;
+  font-size   : 1.8rem;
+  color       : #999999;
+  font-weight : 500;
+}
+
+.checkboxNumber
+{
+  margin    : 0.5rem 0 1.5rem 0;
+  font-size : 0.7rem;
+  color     : #4f4f4f;
+  font-family: var(--roboto);
+
+  input[type="checkbox"]
+  {
+    vertical-align: bottom;
+  }
+}
+
+
+
+
+

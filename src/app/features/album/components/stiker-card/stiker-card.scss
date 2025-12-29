@@ -1,0 +1,116 @@
+:host
+{
+  --roboto : "Roboto", sans-serif;
+}
+
+.card
+{
+  position              : relative; /* Movido para cima para melhor organização */
+  overflow              : visible;
+  height                : 70px;
+  border-radius         : 0.5rem;
+  font-size             : 18px;
+  font-weight           : 500;
+  color                 : #333;
+  cursor                : pointer;
+  background-color      : rgba(156, 156, 156, 0.15);
+  border                : 2px solid rgba(156, 156, 156, 0.35); /* Unificado */
+  font-family           : var(--roboto); /* Ajustado para usar a variável roboto que você criou */
+
+  /* Transições e Comportamento */
+  transition            : transform 0.1s ease-in-out, background 0.3s ease;
+  user-select           : none;
+  -webkit-touch-callout : none;
+  box-shadow            : 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  /* ESTADO: MARCAÇÃO (HAS) */
+  &.has
+  {
+    background  : linear-gradient(
+        180deg,
+        rgba(52, 199, 89, 0.69),
+        rgba(52, 199, 89, 0.48)
+    );
+    color       : #064e0d;
+    border      : 2px solid rgba(52, 199, 89, 0.35);
+    font-weight : 700;
+  }
+
+  /* ESTADO: MOUSE POR CIMA */
+  &:hover
+  {
+    border-color : #007BFF;
+    transform    : scale(1.05); /* Um pouco menor que 1.1 para não cobrir vizinhos */
+  }
+
+  /* ESTADO: CLIQUE E SEGURA (SOBREPÕE O HOVER) */
+  &.pressing,
+  &:active
+  {
+    transform  : scale(0.95) !important; // Valor menor para ficar bem visível
+    filter     : brightness(0.85);
+    box-shadow : none !important;
+    transition : transform 0.05s linear; // Resposta instantânea ao toque
+  }
+
+  .sticker-number
+  {
+    display         : flex;
+    justify-content : flex-end;
+    margin-top      : 2.2rem;
+    padding-right   : 0.4rem;
+    font-family     : var(--roboto);
+    font-weight     : 600;
+    pointer-events  : none; /* Evita que o número interfira no clique */
+  }
+
+  .badge-repetida
+  {
+    position         : absolute;
+    top              : -10px;
+    left             : -2px;
+    background-color : #ffca28;
+    color            : #212121;
+    border           : 2px solid white;
+    border-radius    : 50%;
+    min-width        : 24px;
+    height           : 24px;
+    display          : flex;
+    align-items      : center;
+    justify-content  : center;
+    font-size        : 0.8rem;
+    font-weight      : 800;
+    box-shadow       : 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index          : 10;
+    cursor           : pointer;
+
+    &:active
+    {
+      transform : scale(0.8);
+    }
+  }
+}
+
+/* Animação de Busca */
+@keyframes highlight-flash
+{
+  0%
+  {
+    outline    : 4px solid #007bff;
+    transform  : scale(1.1);
+    box-shadow : 0 0 20px rgba(0, 123, 255, 0.6);
+  }
+  100%
+  {
+    outline    : 0px solid transparent;
+    transform  : scale(1);
+    box-shadow : none;
+  }
+}
+
+.highlight-sticker
+{
+  animation : highlight-flash 3s ease-out forwards;
+  z-index   : 20; /* Maior que o badge para sobrepor tudo */
+  position  : relative;
+}
