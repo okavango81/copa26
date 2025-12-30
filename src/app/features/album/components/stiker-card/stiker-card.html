@@ -1,19 +1,19 @@
-<div class="card"
-     [class.has]="sticker?.has"
-     [class.pressing]="isPressing"
-     [id]="'fig-' + sticker.number"
-     (dblclick)="onDoubleClick()"
-     (mousedown)="startPress()"
-     (mouseup)="endPress()"
-     (mouseleave)="endPress()"
-     (touchstart)="startPress()"
-     (touchend)="endPress()">
+  <div class="card"
+       [class.has]="sticker?.has"
+       [class.pressing]="isPressing"
+       [id]="'fig-' + sticker.number"
+       (dblclick)="onDoubleClick()"
+       (mousedown)="startPress()"
+       (mouseup)="endPress()"
+       (mouseleave)="endPress()"
+       (touchstart)="startPress()"
+       (touchend)="endPress()">
 
-  @if (sticker.duplicates > 0) {
-    <div class="badge-repetida" (click)="onBadgeClick($event)">
-      {{ sticker.duplicates }}
-    </div>
-  }
+    @if (sticker.duplicates > 0) {
+      <div class="badge-repetida" (click)="onBadgeClick($event)">
+        {{ sticker.duplicates }}
+      </div>
+    }
 
-  <span class="sticker-number">{{ sticker?.number }}</span>
-</div>
+    <span class="sticker-number">{{ sticker?.number }}</span>
+  </div>

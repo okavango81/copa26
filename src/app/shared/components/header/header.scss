@@ -2,8 +2,6 @@
 {
   --montSerrat : "Montserrat", sans-serif;
   --inter      : "Inter", sans-serif;
-  --jersey     : "Jersey 10", sans-serif;
-
 }
 
 .topbar
@@ -48,67 +46,46 @@
     .title
     {
       margin                 : 0;
-      font-family            : var(--inter);
+      font-family            : "Inter", sans-serif;
       font-size              : 1.1rem; // Um tiquinho menor costuma parecer mais elegante
       font-weight            : 600; // Semi-bold é o padrão de luxo da Apple
       letter-spacing         : -0.022em; // No Inter, um valor um pouco mais agressivo (0.022) aproxima mais da SF em tamanhos menores
-      line-height            : 1.2; // Garante que o texto não "flutue" demais
+      line-height            : 1.4; // Garante que o texto não "flutue" demais
       color                  : #fff; // Mantendo seu branco
       -webkit-font-smoothing : antialiased; // ESSENCIAL para parecer fonte de sistema
     }
 
     .status
     {
-      font        : var(--inter);
-      font-weight : 400;
+      font-family : "Inter", sans-serif;
+      font-weight : 500;
       font-size   : 0.85rem;
-      color       : rgba(190, 190, 190, 0.8);
+      color       : rgba(232, 232, 232, 0.8);
     }
   }
 }
 
-.actions
+.hamburgerIcon
 {
-  display     : flex;
-  align-items : center;
-  gap         : 1rem;
-}
-
-.menu-btn
-{
-  background    : none;
-  cursor        : pointer;
-  font-size     : 1rem;
-  border        : none;
-  border-radius : 8px;
-  transition    : background 0.2s;
-  margin-bottom : 0.5rem;
-
-  &:hover
-  {
-    background : transparent;
-  }
-}
-
-.hamburger-icon
-{
-  color : #fff;
+  color     : #fff;
+  font-size : 1.85rem;
+  cursor    : pointer;
 }
 
 // Barra de progresso sutil no topo
 .progress-container
 {
-  position   : absolute;
-  bottom     : 0;
-  left       : 0;
-  width      : 100%;
-  height     : 0.3rem;
-  background : rgba(233, 233, 233, 0.27);
+  position     : absolute;
+  bottom       : 0;
+  left         : 0;
+  width        : 100%;
+  height       : 0.35rem;
+  background   : rgb(250, 250, 250);
 
   .progress-bar
   {
     height     : 100%;
-    background : linear-gradient(90deg, #009976, #3dc09c, #7df7d3);
+    background : linear-gradient(90deg, #066a56, #3dc09c, #97ffdf);
     transition : width 0.4s ease-out;
   }
 }

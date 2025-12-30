@@ -9,11 +9,11 @@
     </div>
 
     <div class="actions">
-      <button class="menu-btn" aria-label="Menu">
-        <span class="hamburger-icon">&#9776;</span>
-      </button>
+     <span class="material-symbols-outlined hamburgerIcon" (click)="service.toggleMenu()">menu</span>
     </div>
   </div>
+
+  <app-menu-modal></app-menu-modal>
 
   <div class="progress-container">
     <div class="progress-bar" [style.width.%]="(service.totalObtained() / 670) * 100"></div>

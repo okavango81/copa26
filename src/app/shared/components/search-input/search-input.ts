@@ -1,11 +1,12 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {StickerService} from '../../../core/service/sticker-service';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-search-input',
   imports: [
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './search-input.html',
   styleUrl: './search-input.scss',
@@ -16,8 +17,7 @@ export class SearchInput {
   numberOnly: boolean = false;
   private stickerService = inject(StickerService);
 
-  textOrNumberOnly() {
-    this.numberOnly = !this.numberOnly;
+  constructor(protected service: StickerService) {
   }
 
   selectText(event: Event) {

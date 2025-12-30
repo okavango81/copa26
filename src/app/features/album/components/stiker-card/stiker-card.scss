@@ -1,6 +1,7 @@
 :host
 {
-  --roboto : "Roboto", sans-serif;
+  font-weight : 700;
+  color       : #5e5e5e;
 }
 
 .card
@@ -10,13 +11,9 @@
   height                : 70px;
   border-radius         : 0.5rem;
   font-size             : 18px;
-  font-weight           : 500;
-  color                 : #333;
   cursor                : pointer;
   background-color      : rgba(156, 156, 156, 0.15);
   border                : 2px solid rgba(156, 156, 156, 0.35); /* Unificado */
-  font-family           : var(--roboto); /* Ajustado para usar a variável roboto que você criou */
-
   /* Transições e Comportamento */
   transition            : transform 0.1s ease-in-out, background 0.3s ease;
   user-select           : none;
@@ -26,14 +23,13 @@
   /* ESTADO: MARCAÇÃO (HAS) */
   &.has
   {
-    background  : linear-gradient(
+    background : linear-gradient(
         180deg,
-        rgba(52, 199, 89, 0.69),
-        rgba(52, 199, 89, 0.48)
+        rgba(52, 199, 89, 0.76),
+        rgba(52, 199, 89, 0.42)
     );
-    color       : #064e0d;
-    border      : 2px solid rgba(52, 199, 89, 0.35);
-    font-weight : 700;
+    color      : #008900;
+    border     : 2px solid rgba(52, 199, 89, 0.35);
   }
 
   /* ESTADO: MOUSE POR CIMA */
@@ -48,7 +44,7 @@
   &:active
   {
     transform  : scale(0.95) !important; // Valor menor para ficar bem visível
-    filter     : brightness(0.85);
+    filter     : brightness(0.95);
     box-shadow : none !important;
     transition : transform 0.05s linear; // Resposta instantânea ao toque
   }
@@ -56,30 +52,31 @@
   .sticker-number
   {
     display         : flex;
-    justify-content : flex-end;
-    margin-top      : 2.2rem;
-    padding-right   : 0.4rem;
-    font-family     : var(--roboto);
-    font-weight     : 600;
+    justify-content : end;
+    margin-top      : 2.5rem;
+    padding-right   : 0.35rem;
+    font-family     : "Montserrat", sans-serif;
+    font-size       : 0.95rem;
     pointer-events  : none; /* Evita que o número interfira no clique */
   }
 
   .badge-repetida
   {
     position         : absolute;
-    top              : -10px;
+    top              : -8px;
     left             : -2px;
-    background-color : #ffca28;
-    color            : #212121;
-    border           : 2px solid white;
+    background-color : #ffca19;
+    color            : #1b1b1b;
+    border           : 3px solid #ffffff;
     border-radius    : 50%;
-    min-width        : 24px;
-    height           : 24px;
+    min-width        : 32px;
+    height           : 32px;
     display          : flex;
     align-items      : center;
     justify-content  : center;
-    font-size        : 0.8rem;
-    font-weight      : 800;
+    font-family      : "Inter", sans-serif;
+    font-size        : 0.95rem;
+    font-weight      : 900;
     box-shadow       : 0 2px 4px rgba(0, 0, 0, 0.3);
     z-index          : 10;
     cursor           : pointer;

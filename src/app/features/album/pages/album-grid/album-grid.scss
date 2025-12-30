@@ -18,6 +18,16 @@
   display               : grid;
   grid-template-columns : repeat(5, 1fr);
   gap                   : 0.8rem;
+
+  transition: filter 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+
+  &.menu-is-open {
+    filter: blur(4px);       // Desfoca o card
+    opacity: 0.6;            // Deixa um pouco mais transparente
+    pointer-events: none;    // Impede cliques nas figurinhas com menu aberto
+    transform: scale(0.98);  // Dá um efeito de "recuo" para o fundo
+  }
+
 }
 
 .teams-nav
@@ -43,19 +53,19 @@
   border-radius    : 2rem;
   border           : 1px solid rgba(0, 0, 0, 0.06);
   color            : #565656;
-  background-color : rgba(179, 179, 179, 0.35);
+  background-color : rgba(179, 179, 179, 0.18);
   box-shadow       : 0.5rem 0.5rem 0.5rem rgb(0, 0, 0, 0.2);
   cursor           : pointer;
-  font-size        : 0.85rem;
-  font-family      : var(--roboto);
-  font-weight      : 600;
+  font-size        : 0.9rem;
+  font-family      : "Inter", sans-serif;
+  font-weight      : 700;
   flex             : 0 0 auto; /* Impede que o botão encolha */
 
   &.active
   {
-    background-color : #007bff; // Cor de destaque
+    background-color : #007aff; // Cor de destaque
     color            : white;
-    border-color     : #007bff;
+    border-color     : #007dff;
   }
 
   &:hover:not(.active)

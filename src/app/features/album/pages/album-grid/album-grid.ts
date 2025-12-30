@@ -2,12 +2,14 @@ import {Component, inject} from '@angular/core';
 import {StikerCard} from '../../components/stiker-card/stiker-card';
 import {SearchInput} from '../../../../shared/components/search-input/search-input';
 import {StickerService} from '../../../../core/service/sticker-service';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-album-grid',
   imports: [
     StikerCard,
-    SearchInput
+    SearchInput,
+    AsyncPipe
   ],
   templateUrl: './album-grid.html',
   styleUrl: './album-grid.scss',
@@ -17,6 +19,8 @@ export class AlbumGrid {
   isMouseDown = false;
   startX: any;
   scrollLeft: any;
+  constructor(protected service: StickerService) {
+  }
 
   private stickerService = inject(StickerService);
 

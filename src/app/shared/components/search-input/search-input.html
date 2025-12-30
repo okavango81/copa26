@@ -1,17 +1,17 @@
 <div class="containerInputSearch">
   <span class="material-symbols-outlined mag">search</span>
-  <input type="text" [type]="numberOnly ? 'number' : 'text'"
+  <input type="text"
+         [type]="numberOnly ? 'number' : 'text'"
          placeholder="Pesquisar"
          #searchInput
          (click)="selectText($event)"
          (keyup.enter)="search(searchInput.value)"
-         class="search-input"
-  >
+         class="search-input">
 </div>
+
 <div class="checkboxNumber">
   <label>
-    <input type="checkbox"
-           [(ngModel)]="numberOnly"
-    >Apenas por número
+    <input type="checkbox" [(ngModel)]="numberOnly">
+    Apenas por número
   </label>
 </div>

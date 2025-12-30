@@ -1,14 +1,19 @@
 import {Component, inject, Input} from '@angular/core';
 import {StickerService} from '../../../../core/service/sticker-service';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-stiker-card',
-  imports: [],
+  imports: [
+    AsyncPipe
+  ],
   templateUrl: './stiker-card.html',
   styleUrl: './stiker-card.scss',
 })
 export class StikerCard {
 
+  constructor(protected service: StickerService,) {
+  }
   @Input() sticker: any;
   private timeout: any;
   isPressing = false;

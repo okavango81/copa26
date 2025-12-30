@@ -1,0 +1,45 @@
+<div (click)="closeMenu()"
+     [class.active]="service.menuOpen$ | async"
+     class="overlay">
+
+  <div (click)="stopProp($event)" class="apple-modal">
+    <div class="modal-header">
+      <button (click)="closeMenu()" class="close-btn">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-content">
+
+      @if (!showResetConfirm) {
+        <nav class="menu-items">
+          <button class="menu-item">
+            <span>Importar</span>
+            <span class="material-symbols-outlined">mobile_arrow_down</span>
+          </button>
+          <div class="separator"></div>
+          <button class="menu-item">
+            <span>Exportar</span>
+            <span class="material-symbols-outlined">file_export</span>
+          </button>
+          <div class="separator"></div>
+          <button (click)="showResetConfirm = true" class="menu-item danger">
+            <span>Apagar</span>
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+        </nav>
+      } @else {
+        <div class="confirm-dialog">
+          <h3>Limpar Álbum?</h3>
+          <p>Todas as suas figurinhas marcadas serão removidas. Esta ação não pode ser desfeita.</p>
+
+          <div class="confirm-actions">
+            <button (click)="confirmReset()" class="btn-confirm danger">Apagar Tudo</button>
+            <button (click)="cancelReset()" class="btn-cancel">Cancelar</button>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="containerGrid">
+<div class="containerGrid" [class.menu-is-open]="service.menuOpen$ | async">
   <app-search-input></app-search-input>
 
   <div class="teams-nav"
@@ -6,7 +6,8 @@
        (mousedown)="startDragging($event, nav)"
        (mouseup)="stopDragging()"
        (mouseleave)="stopDragging()"
-       (mousemove)="moveEvent($event, nav)">
+       (mousemove)="moveEvent($event, nav)"
+       >
     @for (team of teams; track team.name; let i = $index) {
       <button
         class="team-button"

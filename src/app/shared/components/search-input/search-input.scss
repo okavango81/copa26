@@ -4,6 +4,7 @@
   margin-top  : 1rem;
   --inter     : "Inter", sans-serif;
   --roboto    : "Roboto", sans-serif;
+  font-weight : 600;
 }
 
 .containerInputSearch input
@@ -16,8 +17,18 @@
   font-size      : 1rem;
   color          : #444444;
   text-transform : capitalize;
-  font-family    : var(--roboto);
-  font-weight    : 400;
+  font-family    : "Inter", sans-serif;
+  font-weight    : 700;
+  transition     : filter 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+
+  // Estilo quando o menu está aberto
+  &.menu-is-open
+  {
+    filter         : blur(8px); // Desfoca o card
+    opacity        : 0.6; // Deixa um pouco mais transparente
+    pointer-events : none; // Impede cliques nas figurinhas com menu aberto
+    transform      : scale(0.95); // Dá um efeito de "recuo" para o fundo
+  }
 
   &:focus
   {
@@ -37,14 +48,14 @@
 
 .checkboxNumber
 {
-  margin    : 0.5rem 0 1.5rem 0;
-  font-size : 0.7rem;
-  color     : #4f4f4f;
-  font-family: var(--roboto);
+  margin      : 0.5rem 0 1.5rem 0;
+  font-size   : 0.75rem;
+  color       : #4f4f4f;
+  font-family : "Inter", sans-serif;
 
   input[type="checkbox"]
   {
-    vertical-align: bottom;
+    vertical-align : bottom;
   }
 }
 

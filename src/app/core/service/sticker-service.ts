@@ -1,10 +1,13 @@
 import {computed, Injectable, signal} from '@angular/core';
 import {StickerModel} from '../../data/models/sticker-model';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StickerService {
+  menuOpen = new BehaviorSubject<boolean>(false);
+  menuOpen$ = this.menuOpen.asObservable();
 
   teams = [
     {name: 'Alemanha', start: 380, end: 399},
@@ -144,6 +147,11 @@ export class StickerService {
     this.save();
   }
 
+  toggleMenu() {
+    console.log("toggleMenu");
+    this.menuOpen.next(!this.menuOpen.value);
+  }
+
   resetAll() {
     const cleanAlbum = Array.from({length: 670}, (_, i) =>
       new StickerModel(i + 1, false, 0, false)
@@ -152,6 +160,17 @@ export class StickerService {
     this.stickersSignal.set(cleanAlbum); // Atualiza o Signal
     this.fileName = "Meu Álbum";
     this.save(); // Salva no LocalStorage
+  }
+
+  resetAlbumConfirmed() {
+    // Coloque aqui a lógica que você já tem no seu service
+    const cleanAlbum = Array.from({length: 670}, (_, i) =>
+      new StickerModel(i + 1, false, 0, false)
+    );
+    this.stickersSignal.set(cleanAlbum);
+    this.fileName = "Meu Álbum";
+    this.save();
+    this.toggleMenu(); // Fecha o menu após resetar
   }
 
   exportJson(): string {
