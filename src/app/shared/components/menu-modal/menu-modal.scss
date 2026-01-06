@@ -8,15 +8,16 @@
   z-index                 : 1000;
   background              : rgba(0, 0, 0, 0.44); // Overlay escuro suave
   backdrop-filter         : blur(4px); // O efeito de vidro
-  -webkit-backdrop-filter : blur(15px);
+  -webkit-backdrop-filter : blur(4px);
 
   // Escondido por padrão
   display                 : flex;
-  align-items             : flex-end; // No mobile, modais Apple costumam vir de baixo
+  //align-items             : flex-end; // No mobile, modais Apple costumam vir de baixo
+  align-items             : center;
   justify-content         : center;
   opacity                 : 0;
   visibility              : hidden;
-  transition              : all 0.4s ease-in-out;
+  transition              : all 0.1s ease-in-out;
 
   &.active
   {
@@ -32,15 +33,15 @@
 
 .apple-modal
 {
-  background     : rgba(255, 255, 255, 0.73);
-  width          : 85%;
-  max-width      : 500px;
-  margin-bottom  : 20px; // Espaço da borda inferior
-  border-radius  : 1rem; // Cantos bem arredondados
-  box-shadow     : 0 10px 40px rgba(0, 0, 0, 0.2);
-  transform      : translateY(100%); // Começa fora da tela (embaixo)
-  transition     : transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-  padding-bottom : 20px;
+  background    : rgba(255, 255, 255, 0.73);
+  width         : 92%;
+  max-width     : 500px;
+  margin-bottom : 20px; // Espaço da borda inferior
+  border-radius : 1rem; // Cantos bem arredondados
+  box-shadow    : 0 10px 40px rgba(0, 0, 0, 0.8);
+  transform     : translateY(100%); // Começa fora da tela (embaixo)
+  transition    : transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  padding       : 0 5px 28px 5px;
 }
 
 .modal-header
@@ -82,7 +83,6 @@
     display         : flex;
     align-items     : center;
     gap             : 15px;
-    padding         : 15px;
     border          : none;
     background      : transparent;
     font-family     : "Inter", sans-serif;
@@ -91,9 +91,8 @@
     width           : 100%;
     text-align      : left;
     border-radius   : 12px;
-    display         : flex;
     justify-content : space-between;
-    padding         : 0 20px;
+    padding         : 0 15px;
 
     &:active
     {
@@ -109,6 +108,11 @@
     &.danger .material-symbols-outlined, &.danger
     {
       color : #ff3b30;
+    }
+
+    .noHas
+    {
+      color : #9d9d9d;
     }
   }
 }
@@ -127,14 +131,14 @@
   align-items    : start;
   font-family    : "Inter", sans-serif;
   font-weight    : 400;
-  padding    : 20px;
+  padding        : 10px;
 
   h3
   {
-    font-size       : 17px;
-    font-weight     : 700;
-    margin          : 0 16px 4px 16px;
-    color           : #000;
+    font-size   : 17px;
+    font-weight : 700;
+    margin      : 0 16px 4px 16px;
+    color       : #000;
   }
 
   p
@@ -148,10 +152,10 @@
 
   .confirm-actions
   {
-    display        : flex;
+    display         : flex;
     //flex-direction : column; // Botões empilhados
-    width          : 100%;
-    justify-content: center;
+    width           : 100%;
+    justify-content : center;
 
     button
     {
@@ -176,11 +180,11 @@
       color            : #ff4245;
       border-radius    : 2rem;
       font-weight      : 500;
-      cursor: pointer;
+      cursor           : pointer;
 
       &:active
       {
-        background-color : rgba(49, 49, 51, 0.89);// Feedback de toque
+        background-color : rgba(49, 49, 51, 0.89); // Feedback de toque
       }
     }
 
@@ -192,7 +196,7 @@
       font-weight      : 600; // Cancelar é o destaque no iOS
       &:active
       {
-        background-color : rgba(0, 122, 255, 0.83);// Feedback de toque
+        background-color : rgba(0, 122, 255, 0.83); // Feedback de toque
       }
     }
   }

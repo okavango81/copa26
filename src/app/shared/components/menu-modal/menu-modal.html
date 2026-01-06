@@ -13,6 +13,7 @@
 
       @if (!showResetConfirm) {
         <nav class="menu-items">
+
           <button class="menu-item">
             <span>Importar</span>
             <span class="material-symbols-outlined">mobile_arrow_down</span>
@@ -22,11 +23,32 @@
             <span>Exportar</span>
             <span class="material-symbols-outlined">file_export</span>
           </button>
+
           <div class="separator"></div>
-          <button (click)="showResetConfirm = true" class="menu-item danger">
-            <span>Apagar</span>
-            <span class="material-symbols-outlined">delete</span>
+
+          <button class="menu-item" [disabled]="service.totalObtained() === 0">
+            <span>Minhas Figurinhas</span>
+            <span class="material-symbols-outlined" [class.noHas] = "service.totalObtained() < 1">sticker</span>
           </button>
+
+          <div class="separator"></div>
+
+          <button class="menu-item" [disabled]="!service.dup">
+            <span>Repetidas</span>
+            <span class="material-symbols-outlined" [class.noHas] = "service.totalObtained() < 1" >content_copy</span>
+          </button>
+
+          <div class="separator"></div>
+
+          <button
+            (click)="showResetConfirm = true"
+            class="menu-item"
+            [class.danger]="service.totalObtained() > 0"
+            [disabled]="service.totalObtained() === 0">
+            <span>Apagar</span>
+            <span class="material-symbols-outlined" [class.noHas] = "service.totalObtained() < 1">delete</span>
+          </button>
+
         </nav>
       } @else {
         <div class="confirm-dialog">

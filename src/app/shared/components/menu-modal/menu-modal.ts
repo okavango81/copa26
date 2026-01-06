@@ -35,4 +35,5 @@ export class MenuModal {
     this.showResetConfirm = false;
     this.service.toggleMenu();
   }
+
 }

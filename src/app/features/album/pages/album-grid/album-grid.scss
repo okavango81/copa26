@@ -19,13 +19,13 @@
   grid-template-columns : repeat(5, 1fr);
   gap                   : 0.8rem;
 
-  transition: filter 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+  transition: filter 0.1s ease, transform 0.1s ease, opacity 0.2s ease;
 
   &.menu-is-open {
     filter: blur(4px);       // Desfoca o card
-    opacity: 0.6;            // Deixa um pouco mais transparente
+    opacity: 0.75;            // Deixa um pouco mais transparente
     pointer-events: none;    // Impede cliques nas figurinhas com menu aberto
-    transform: scale(0.98);  // Dá um efeito de "recuo" para o fundo
+    //transform: scale(0.98);  // Dá um efeito de "recuo" para o fundo
   }
 
 }

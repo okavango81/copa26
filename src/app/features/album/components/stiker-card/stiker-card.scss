@@ -69,8 +69,8 @@
     color            : #1b1b1b;
     border           : 3px solid #ffffff;
     border-radius    : 50%;
-    min-width        : 32px;
-    height           : 32px;
+    min-width        : 28px;
+    height           : 28px;
     display          : flex;
     align-items      : center;
     justify-content  : center;
@@ -99,7 +99,7 @@
   }
   100%
   {
-    outline    : 0px solid transparent;
+    outline    : 0 solid transparent;
     transform  : scale(1);
     box-shadow : none;
   }

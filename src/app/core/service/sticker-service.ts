@@ -46,16 +46,6 @@ export class StickerService {
   ];
 
   selectedTeamIndex = signal(0);
-
-  // Lógica de pegar o intervalo (getRange)
-  getRange(start: number, end: number) {
-    const range = [];
-    for (let i = start; i <= end; i++) {
-      range.push({number: i, has: false, duplicates: 0});
-    }
-    return range;
-  }
-
   public fileName: string = "Meu Álbum";
   private readonly KEY = 'sticker_album';
 
@@ -65,8 +55,19 @@ export class StickerService {
   // 2. Expomos como readonly para os componentes lerem
   public stickers = this.stickersSignal.asReadonly();
 
+  public dup : boolean = false;
+
   constructor() {
     this.load();
+  }
+
+  // Lógica de pegar o intervalo (getRange)
+  getRange(start: number, end: number) {
+    const range = [];
+    for (let i = start; i <= end; i++) {
+      range.push({number: i, has: false, duplicates: 0});
+    }
+    return range;
   }
 
   private load() {
@@ -121,12 +122,14 @@ export class StickerService {
 
     });
     this.save();
+    console.log("Total obtido: " , this.totalObtained());
   }
 
   incrementDuplicate(num: number) {
     this.stickersSignal.update(list =>
       list.map(s => {
         if (s.number === num && s.has) {
+          this.dup = true;
           return new StickerModel(s.number, true, s.duplicates + 1, false);
         }
         return s;
@@ -141,10 +144,12 @@ export class StickerService {
         if (s.number === num && s.duplicates > 0) {
           return new StickerModel(s.number, true, s.duplicates - 1, s.isPressing);
         }
+        this.dup = false;
         return s;
       })
     );
     this.save();
+
   }
 
   toggleMenu() {
@@ -168,6 +173,7 @@ export class StickerService {
       new StickerModel(i + 1, false, 0, false)
     );
     this.stickersSignal.set(cleanAlbum);
+    this.dup = false;
     this.fileName = "Meu Álbum";
     this.save();
     this.toggleMenu(); // Fecha o menu após resetar
