@@ -55,11 +55,13 @@ export class StickerService {
   // 2. Expomos como readonly para os componentes lerem
   public stickers = this.stickersSignal.asReadonly();
 
-  public dup : boolean = false;
-
   constructor() {
     this.load();
   }
+
+  public hasDuplicates = computed(() =>
+    this.stickersSignal().some(s => s.duplicates > 0)
+  );
 
   // Lógica de pegar o intervalo (getRange)
   getRange(start: number, end: number) {
@@ -129,7 +131,6 @@ export class StickerService {
     this.stickersSignal.update(list =>
       list.map(s => {
         if (s.number === num && s.has) {
-          this.dup = true;
           return new StickerModel(s.number, true, s.duplicates + 1, false);
         }
         return s;
@@ -144,7 +145,6 @@ export class StickerService {
         if (s.number === num && s.duplicates > 0) {
           return new StickerModel(s.number, true, s.duplicates - 1, s.isPressing);
         }
-        this.dup = false;
         return s;
       })
     );
@@ -168,33 +168,35 @@ export class StickerService {
   }
 
   resetAlbumConfirmed() {
-    // Coloque aqui a lógica que você já tem no seu service
-    const cleanAlbum = Array.from({length: 670}, (_, i) =>
-      new StickerModel(i + 1, false, 0, false)
-    );
-    this.stickersSignal.set(cleanAlbum);
-    this.dup = false;
-    this.fileName = "Meu Álbum";
-    this.save();
-    this.toggleMenu(); // Fecha o menu após resetar
+    this.resetAll();
+    this.toggleMenu();
   }
 
-  exportJson(): string {
+  exportJson(newFileName?: string): string {
+    // Se um nome foi passado, atualizamos a variável do service
+    if (newFileName) {
+      this.fileName = newFileName;
+    }
     // Chamamos o signal() para pegar o array atual e então converter
     return JSON.stringify(this.stickersSignal());
   }
 
-  importJson(payload: string) {
+  importJson(payload: string, newFileName?: string) {
     try {
       const parsed = JSON.parse(payload);
-
       if (!Array.isArray(parsed)) throw new Error('Formato inválido');
 
       const importedData = parsed.map(f =>
         new StickerModel(f.number, f.has, f.duplicates, f.isPressing ?? false)
       );
 
-      this.stickersSignal.set(importedData); // Notifica o app inteiro da mudança
+      this.stickersSignal.set(importedData);
+
+      // Se um nome foi passado, atualizamos a variável do service
+      if (newFileName) {
+        this.fileName = newFileName;
+      }
+
       this.save();
     } catch (e) {
       console.error('Erro ao importar JSON:', e);

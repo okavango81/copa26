@@ -14,12 +14,16 @@
       @if (!showResetConfirm) {
         <nav class="menu-items">
 
-          <button class="menu-item">
+          <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept=".json">
+
+          <button class="menu-item" (click)="fileInput.click()">
             <span>Importar</span>
             <span class="material-symbols-outlined">mobile_arrow_down</span>
           </button>
+
           <div class="separator"></div>
-          <button class="menu-item">
+
+          <button class="menu-item" (click)="exportAlbum()">
             <span>Exportar</span>
             <span class="material-symbols-outlined">file_export</span>
           </button>
@@ -28,14 +32,15 @@
 
           <button class="menu-item" [disabled]="service.totalObtained() === 0">
             <span>Minhas Figurinhas</span>
-            <span class="material-symbols-outlined" [class.noHas] = "service.totalObtained() < 1">sticker</span>
+            <span class="material-symbols-outlined" [class.noHas]="service.totalObtained() < 1">sticker</span>
           </button>
 
           <div class="separator"></div>
 
-          <button class="menu-item" [disabled]="!service.dup">
+          <button class="menu-item" [disabled]="!service.hasDuplicates()">
             <span>Repetidas</span>
-            <span class="material-symbols-outlined" [class.noHas] = "service.totalObtained() < 1" >content_copy</span>
+            <span class="material-symbols-outlined"
+                  [class.noHas]="!service.hasDuplicates()">content_copy</span>
           </button>
 
           <div class="separator"></div>
@@ -46,7 +51,7 @@
             [class.danger]="service.totalObtained() > 0"
             [disabled]="service.totalObtained() === 0">
             <span>Apagar</span>
-            <span class="material-symbols-outlined" [class.noHas] = "service.totalObtained() < 1">delete</span>
+            <span class="material-symbols-outlined" [class.noHas]="service.totalObtained() < 1">delete</span>
           </button>
 
         </nav>

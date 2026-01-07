@@ -46,21 +46,22 @@
     .title
     {
       margin                 : 0;
-      font-family            : "Inter", sans-serif;
+      font-family            : "Google Sans Flex", sans-serif;
       font-size              : 1.1rem; // Um tiquinho menor costuma parecer mais elegante
       font-weight            : 600; // Semi-bold é o padrão de luxo da Apple
       letter-spacing         : -0.022em; // No Inter, um valor um pouco mais agressivo (0.022) aproxima mais da SF em tamanhos menores
       line-height            : 1.4; // Garante que o texto não "flutue" demais
       color                  : #fff; // Mantendo seu branco
       -webkit-font-smoothing : antialiased; // ESSENCIAL para parecer fonte de sistema
+      text-transform         : capitalize;
     }
 
     .status
     {
       font-family : "Inter", sans-serif;
-      font-weight : 500;
-      font-size   : 0.85rem;
-      color       : rgba(232, 232, 232, 0.8);
+      font-weight : 600;
+      font-size   : 0.68rem;
+      color       : rgb(140, 140, 140);
     }
   }
 }
@@ -75,12 +76,12 @@
 // Barra de progresso sutil no topo
 .progress-container
 {
-  position     : absolute;
-  bottom       : 0;
-  left         : 0;
-  width        : 100%;
-  height       : 0.35rem;
-  background   : rgb(250, 250, 250);
+  position   : absolute;
+  bottom     : 0;
+  left       : 0;
+  width      : 100%;
+  height     : 0.35rem;
+  background : rgb(250, 250, 250);
 
   .progress-bar
   {
