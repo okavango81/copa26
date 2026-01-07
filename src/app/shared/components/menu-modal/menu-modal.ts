@@ -83,8 +83,6 @@ export class MenuModal {
     }
   }
 
-
-
 // Agrupa as figurinhas que o usuário TEM por time
   public stickersByTeam = computed(() => {
     const allStickers = this.service.stickers();

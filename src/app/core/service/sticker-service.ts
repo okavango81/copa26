@@ -153,7 +153,6 @@ export class StickerService {
   }
 
   toggleMenu() {
-    console.log("toggleMenu");
     this.menuOpen.next(!this.menuOpen.value);
   }
 
