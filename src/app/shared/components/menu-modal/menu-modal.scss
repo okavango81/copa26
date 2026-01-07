@@ -7,7 +7,7 @@
   height                  : 100vh;
   z-index                 : 1000;
   background              : rgba(0, 0, 0, 0.44); // Overlay escuro suave
-  backdrop-filter         : blur(6px); // O efeito de vidro
+  backdrop-filter         : blur(8px); // O efeito de vidro
   -webkit-backdrop-filter : blur(4px);
 
   // Escondido por padrão
@@ -33,11 +33,11 @@
 
 .apple-modal
 {
-  background    : rgba(255, 255, 255, 0.83);
-  width         : 92%;
+  background    : rgba(255, 255, 255, 0.85);
+  width         : 90%;
   max-width     : 500px;
   margin-bottom : 2rem; // Espaço da borda inferior
-  border-radius : 1.1rem; // Cantos bem arredondados
+  border-radius : 1.4rem; // Cantos bem arredondados
   box-shadow    : 0 10px 40px rgba(0, 0, 0, 0.8);
   transform     : translateY(100%); // Começa fora da tela (embaixo)
   transition    : transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -223,14 +223,13 @@
 {
   display        : flex;
   flex-direction : column;
-  max-height     : 71vh; // Define uma altura máxima para o scroll interno
-  border-radius  : 1.5rem;
+  max-height     : 58vh; // Define uma altura máxima para o scroll interno
 
   h3
   {
-    font-size   : 1.1rem;
+    font-size   : 1.4rem;
     font-family : "Inter", sans-serif;
-    padding     : 0 2rem 0 1rem;
+    padding     : 0 2rem 0 1.4rem;
   }
 
   .back-header
@@ -247,7 +246,7 @@
       color       : #007aff;
       display     : flex;
       align-items : center;
-      font-size   : 0.8rem;
+      font-size   : 0.92rem;
       cursor      : pointer;
       font-weight : 500;
       font-family : "Inter", sans-serif;
@@ -280,9 +279,9 @@
 
   .team-group
   {
-    margin-bottom : 20px;
-    background    : rgba(255, 255, 255, 0.5);
-    padding       : 12px;
+    margin-bottom : 16px;
+    background    : rgba(255, 255, 255, 1);
+    padding       : 0.92rem;
     border-radius : 12px;
 
     .team-info
@@ -290,7 +289,7 @@
       display         : flex;
       justify-content : space-between;
       margin-bottom   : 8px;
-      font-size       : 0.8rem;
+      font-size       : 1rem;
       border-bottom   : 1px solid rgba(0, 0, 0, 0.05);
       padding-bottom  : 5px;
       font-family     : "Inter", sans-serif;
@@ -307,11 +306,11 @@
         background      : #313133;
         color           : #ffffff;
         padding         : 0.24rem 0.6rem;
-        border-radius   : 0.26rem;
-        font-size       : 0.75rem;
+        border-radius   : 0.22rem;
+        font-size       : 0.82rem;
         font-weight     : bold;
         font-family     : "Inter", sans-serif;
-        min-width       : 1.4rem;
+        min-width       : 2rem;
         display         : flex;
         justify-content : center;
       }

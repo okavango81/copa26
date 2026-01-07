@@ -9,7 +9,13 @@
     </div>
 
     <div class="actions">
-     <span class="material-symbols-outlined hamburgerIcon" (click)="service.toggleMenu()">menu</span>
+      <button type="button" class="btn-menu" (click)="service.toggleMenu()">
+    <span class="material-symbols-outlined hamburgerIcon"
+          draggable="false"
+          style="pointer-events: none;">
+      menu
+    </span>
+      </button>
     </div>
   </div>
 

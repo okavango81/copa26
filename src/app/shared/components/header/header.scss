@@ -66,11 +66,28 @@
   }
 }
 
+.btn-menu
+{
+  background                  : none;
+  border                      : none;
+  padding                     : 8px;
+  cursor                      : pointer;
+  outline                     : none;
+
+  /* Impede o Chrome de selecionar o texto "menu" e abrir a busca */
+  -webkit-user-select         : none;
+  -webkit-touch-callout       : none;
+  -webkit-tap-highlight-color : transparent;
+  touch-action                : manipulation;
+}
+
 .hamburgerIcon
 {
-  color     : #fff;
-  font-size : 1.85rem;
-  cursor    : pointer;
+  color          : #fff;
+  font-size      : 1.85rem;
+  cursor         : pointer;
+  pointer-events : none;
+  user-select    : none;
 }
 
 // Barra de progresso sutil no topo
