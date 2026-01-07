@@ -30,18 +30,75 @@
 
           <div class="separator"></div>
 
-          <button class="menu-item" [disabled]="service.totalObtained() === 0">
-            <span>Minhas Figurinhas</span>
+          <button class="menu-item" [disabled]="service.totalObtained() === 0" (click)="onOffMyStickers()">
+            <span [class.noHas]="service.totalObtained() < 1">Minhas Figurinhas</span>
             <span class="material-symbols-outlined" [class.noHas]="service.totalObtained() < 1">sticker</span>
           </button>
 
+          <div class="modal-content">
+            @if (showMyStickers) {
+              <div class="my-stickers-container">
+                <div class="back-header">
+                  <button (click)="showMyStickers = false" class="back-btn">
+                    <span class="material-symbols-outlined">close</span>
+                    Fechar
+                  </button>
+                </div>
+
+                <div class="scroll-area">
+                  @for (team of stickersByTeam(); track team.name) {
+                    <div class="team-group">
+                      <div class="team-info">
+                        <strong>{{ team.name }}</strong>
+                        <span>{{ team.count }} un.</span>
+                      </div>
+                      <div class="sticker-grid">
+                        @for (s of team.stickers; track s.number) {
+                          <div class="sticker-badge">{{ s.number }}</div>
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+
           <div class="separator"></div>
 
-          <button class="menu-item" [disabled]="!service.hasDuplicates()">
-            <span>Repetidas</span>
-            <span class="material-symbols-outlined"
-                  [class.noHas]="!service.hasDuplicates()">content_copy</span>
+          <button class="menu-item" [disabled]="!service.hasDuplicates()" (click)="onOffDuplicates()">
+            <span [class.noHas]="!service.hasDuplicates()">Repetidas</span>
+            <span class="material-symbols-outlined" [class.noHas]="!service.hasDuplicates()">content_copy</span>
           </button>
+
+          <div class="modal-content">
+            @if (showDuplicatesModal) {
+              <div class="my-stickers-container">
+                <div class="back-header">
+                  <button (click)="showDuplicatesModal = false" class="back-btn">
+                    <span class="material-symbols-outlined">close</span>
+                    Fechar
+                  </button>
+                </div>
+
+                <div class="scroll-area">
+                  @for (team of duplicatesByTeam(); track team.name) {
+                    <div class="team-group">
+                      <div class="team-info">
+                        <strong>{{ team.name }}</strong>
+                        <span>{{ team.count }} un.</span>
+                      </div>
+                      <div class="sticker-grid">
+                        @for (s of team.stickers; track s.number) {
+                          <div class="sticker-badge">{{ s.number }}</div>
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </div>
 
           <div class="separator"></div>
 
@@ -50,7 +107,7 @@
             class="menu-item"
             [class.danger]="service.totalObtained() > 0"
             [disabled]="service.totalObtained() === 0">
-            <span>Apagar</span>
+            <span [class.noHas]="service.totalObtained() < 1">Apagar</span>
             <span class="material-symbols-outlined" [class.noHas]="service.totalObtained() < 1">delete</span>
           </button>
 
@@ -61,7 +118,7 @@
           <p>Todas as suas figurinhas marcadas serão removidas. Esta ação não pode ser desfeita.</p>
 
           <div class="confirm-actions">
-            <button (click)="confirmReset()" class="btn-confirm danger">Apagar Tudo</button>
+            <button (click)="confirmReset(); showMyStickers = false" class="btn-confirm danger">Apagar Tudo</button>
             <button (click)="cancelReset()" class="btn-cancel">Cancelar</button>
           </div>
         </div>

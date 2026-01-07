@@ -86,13 +86,14 @@
     border          : none;
     background      : transparent;
     font-family     : "Inter", sans-serif;
-    font-size       : 17px;
-    font-weight     : 500;
+    font-size       : 1rem;
+    font-weight     : 600;
     width           : 100%;
     text-align      : left;
     border-radius   : 12px;
     justify-content : space-between;
     padding         : 0 15px;
+    color           : #1b1b1b;
 
     &:active
     {
@@ -213,5 +214,105 @@
   {
     opacity   : 1;
     transform : scale(1);
+  }
+}
+
+/* minhas figurinhas - repetidas */
+.my-stickers-container
+{
+  display        : flex;
+  flex-direction : column;
+  max-height     : 31vh; // Define uma altura máxima para o scroll interno
+  border         : solid rgba(0, 0, 0, 0.15) 0.1rem;
+  border-radius  : 1rem;
+  padding        : 0.85rem 0.1rem;
+
+  .back-header
+  {
+    display     : flex;
+    align-items : center;
+    padding     : 0 15px 15px;
+    gap         : 10px;
+
+    .back-btn
+    {
+      background  : none;
+      border      : none;
+      color       : #007aff;
+      display     : flex;
+      align-items : center;
+      font-size   : 0.8rem;
+      cursor      : pointer;
+      font-weight : 500;
+
+      span
+      {
+        font-size     : 1rem;
+        margin-bottom : 0.11rem;
+        font-weight   : 900;
+      }
+    }
+
+    h3
+    {
+      margin       : 0;
+      font-size    : 18px;
+      flex         : 1;
+      text-align   : center;
+      margin-right : 50px;
+    }
+  }
+
+  .scroll-area
+  {
+    overflow-y : auto;
+    padding    : 0 20px;
+
+    // Custom Scrollbar suave
+    &::-webkit-scrollbar
+    {
+      width : 4px;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+      background    : rgba(0, 0, 0, 0.1);
+      border-radius : 10px;
+    }
+  }
+
+  .team-group
+  {
+    margin-bottom : 20px;
+    background    : rgba(255, 255, 255, 0.5);
+    padding       : 12px;
+    border-radius : 12px;
+
+    .team-info
+    {
+      display         : flex;
+      justify-content : space-between;
+      margin-bottom   : 8px;
+      font-size       : 14px;
+      border-bottom   : 1px solid rgba(0, 0, 0, 0.05);
+      padding-bottom  : 5px;
+    }
+
+    .sticker-grid
+    {
+      display   : flex;
+      flex-wrap : wrap;
+      gap       : 6px;
+
+      .sticker-badge
+      {
+        background    : #313133;
+        color         : white;
+        padding       : 2px 8px;
+        border-radius : 6px;
+        font-size     : 12px;
+        font-weight   : bold;
+      }
+    }
   }
 }

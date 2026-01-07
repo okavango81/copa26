@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, computed} from '@angular/core';
 import {StickerService} from '../../../core/service/sticker-service';
 import {AsyncPipe} from '@angular/common';
 
@@ -11,6 +11,10 @@ import {AsyncPipe} from '@angular/common';
   styleUrl: './menu-modal.scss',
 })
 export class MenuModal {
+
+  showMyStickers = false; // Controle de tela
+  showDuplicatesModal = false;
+
   constructor(public service: StickerService) {
   }
 
@@ -50,7 +54,7 @@ export class MenuModal {
     const fileNameWithExt = finalFileName.endsWith('.json') ? finalFileName : `${finalFileName}.json`;
     const nameWithoutExt = finalFileName.replace(/\.[^/.]+$/, "");
     const data = this.service.exportJson(nameWithoutExt);
-    const blob = new Blob([data], { type: 'application/json' });
+    const blob = new Blob([data], {type: 'application/json'});
     const url = window.URL.createObjectURL(blob);
 
     const link = document.createElement('a');
@@ -77,6 +81,58 @@ export class MenuModal {
       };
       reader.readAsText(file);
     }
+  }
+
+
+
+// Agrupa as figurinhas que o usuário TEM por time
+  public stickersByTeam = computed(() => {
+    const allStickers = this.service.stickers();
+    return this.service.teams.map(team => {
+      // Filtra as figurinhas do range desse time que o usuário 'has'
+      const ownedInRange = allStickers.filter(s =>
+        s.number >= team.start &&
+        s.number <= team.end &&
+        s.has
+      );
+
+      return {
+        name: team.name,
+        count: ownedInRange.length,
+        stickers: ownedInRange
+      };
+    }).filter(team => team.count > 0); // Só mostra times que têm pelo menos uma
+  });
+
+  // Agrupa apenas as figurinhas REPETIDAS por time
+  public duplicatesByTeam = computed(() => {
+    const allStickers = this.service.stickers();
+
+    return this.service.teams.map(team => {
+      // Filtra figurinhas do time que possuem duplicatas
+      const dupsInRange = allStickers.filter(s =>
+        s.number >= team.start &&
+        s.number <= team.end &&
+        s.duplicates > 0
+      );
+
+      // Calcula o total de itens extras (soma de todas as duplicatas do time)
+      const totalDupsInTeam = dupsInRange.reduce((acc, s) => acc + s.duplicates, 0);
+
+      return {
+        name: team.name,
+        count: totalDupsInTeam, // Total de repetidas (volume)
+        stickers: dupsInRange   // Lista das figurinhas específicas
+      };
+    }).filter(team => team.count > 0); // Só mostra times com repetidas
+  });
+
+  onOffMyStickers() {
+    this.showMyStickers = !this.showMyStickers;
+  }
+
+  onOffDuplicates() {
+    this.showDuplicatesModal = !this.showDuplicatesModal;
   }
 
 }
