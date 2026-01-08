@@ -25,4 +25,4 @@ npm install -g angular-cli-ghpages
 ng build --base-href /copa26/
 
 # 2. Faz o upload dos arquivos para a branch gh-pages
-npx ngh --dir=dist/copa26/browser --open
+npx ngh --dir=dist/copa26/browser 
