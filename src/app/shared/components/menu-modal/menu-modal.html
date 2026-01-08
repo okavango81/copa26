@@ -80,14 +80,14 @@
           <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept=".json">
 
           <button class="menu-item" (click)="fileInput.click()">
-            <span>Importar</span>
+            <span>Importar Álbum</span>
             <span class="material-symbols-outlined">mobile_arrow_down</span>
           </button>
 
           <div class="separator"></div>
 
           <button class="menu-item" (click)="exportAlbum()">
-            <span>Exportar</span>
+            <span>Exportar Álbum</span>
             <span class="material-symbols-outlined">file_export</span>
           </button>
 
@@ -101,7 +101,7 @@
           <div class="separator"></div>
 
           <button class="menu-item" [disabled]="!service.hasDuplicates()" (click)="onOffDuplicates()">
-            <span [class.noHas]="!service.hasDuplicates()">Repetidas</span>
+            <span [class.noHas]="!service.hasDuplicates()">Figurinhas Repetidas</span>
             <span class="material-symbols-outlined" [class.noHas]="!service.hasDuplicates()">content_copy</span>
           </button>
 
@@ -111,7 +111,7 @@
                   [class.danger]="service.totalObtained() > 0"
                   [disabled]="service.totalObtained() < 1"
                   >
-            <span [class.noHas]="service.totalObtained() === 0">Apagar</span>
+            <span [class.noHas]="service.totalObtained() === 0">Apagar Álbum</span>
             <span class="material-symbols-outlined" [class.noHas]="service.totalObtained() === 0">delete</span>
           </button>
         </nav>

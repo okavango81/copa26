@@ -1,11 +1,13 @@
 import {Component, computed} from '@angular/core';
 import {StickerService} from '../../../core/service/sticker-service';
 import {AsyncPipe} from '@angular/common';
+import {SearchInput} from '../search-input/search-input';
 
 @Component({
   selector: 'app-menu-modal',
   imports: [
-    AsyncPipe
+    AsyncPipe,
+    SearchInput
   ],
   templateUrl: './menu-modal.html',
   styleUrl: './menu-modal.scss',
