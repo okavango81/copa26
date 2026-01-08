@@ -1,3 +1,5 @@
+$smMobile: 481px;
+$mdMobile: 768px;
 .overlay
 {
   position                : fixed;
@@ -223,7 +225,7 @@
 {
   display        : flex;
   flex-direction : column;
-  max-height     : 58vh; // Define uma altura máxima para o scroll interno
+  max-height     : 60vh; // Define uma altura máxima para o scroll interno
 
   h3
   {
@@ -297,9 +299,17 @@
 
     .sticker-grid
     {
-      display   : flex;
-      flex-wrap : wrap;
-      gap       : 0.4rem;
+      display: grid;
+      // Isso cria colunas automáticas que preenchem o espaço,
+      // mas mantém os itens com um tamanho mínimo (ex: 60px)
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 10px; // O substituto perfeito para o space-between
+      justify-content: start;
+
+      @media (max-width: $smMobile) {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        gap: 4px;
+      }
 
       .sticker-badge
       {
@@ -310,9 +320,10 @@
         font-size       : 0.82rem;
         font-weight     : bold;
         font-family     : "Inter", sans-serif;
-        min-width       : 2rem;
+        width           : 2rem;
         display         : flex;
-        justify-content : center;
+        justify-content: center;
+
       }
     }
   }
