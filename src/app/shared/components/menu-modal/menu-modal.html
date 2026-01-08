@@ -29,7 +29,10 @@
           <h3>Minhas Figurinhas</h3>
           <div class="back-header">
             <button (click)="showMyStickers = false" class="back-btn">
-              <span class="material-symbols-outlined">arrow_back</span> Voltar
+              <span class="material-symbols-outlined"></span> Voltar
+            </button>
+            <button (click)="showMyStickers = false; closeMenu()" class="closeMenu">
+              <span class="material-symbols-outlined"></span> Fechar
             </button>
           </div>
           <div class="scroll-area">
@@ -54,7 +57,10 @@
             <h3>Figurinhas Repetidas</h3>
             <div class="back-header">
               <button (click)="showDuplicatesModal = false" class="back-btn">
-                <span class="material-symbols-outlined">arrow_back</span>Voltar
+                <span class="material-symbols-outlined"></span>Voltar
+              </button>
+              <button (click)="showMyStickers = false; closeMenu()" class="closeMenu">
+                <span class="material-symbols-outlined"></span> Fechar
               </button>
             </div>
 

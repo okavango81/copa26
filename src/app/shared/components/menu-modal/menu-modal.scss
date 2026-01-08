@@ -1,5 +1,5 @@
-$smMobile: 481px;
-$mdMobile: 768px;
+$smMobile : 481px;
+$mdMobile : 768px;
 .overlay
 {
   position                : fixed;
@@ -35,7 +35,7 @@ $mdMobile: 768px;
 
 .apple-modal
 {
-  background    : rgba(255, 255, 255, 0.85);
+  background    : rgba(249, 249, 249, 0.91);
   width         : 90%;
   max-width     : 500px;
   margin-bottom : 2rem; // Espaço da borda inferior
@@ -229,35 +229,60 @@ $mdMobile: 768px;
 
   h3
   {
-    font-size   : 1.4rem;
+    font-size   : 1rem;
     font-family : "Inter", sans-serif;
-    padding     : 0 2rem 0 1.4rem;
+    margin      : 0 auto 0.5rem auto;
+    color       : #050505;
   }
 
   .back-header
   {
-    display     : flex;
-    align-items : center;
-    padding     : 0 15px 15px;
-    gap         : 10px;
+    display         : flex;
+    align-items     : center;
+    padding         : 10px 0 30px;
+    gap             : 16px;
+    justify-content : center;
+
+    .closeMenu
+    {
+      padding     : 0.36rem 1.2rem;
+      font-size   : 0.85rem;
+      cursor      : pointer;
+      font-weight : 700;
+      border-radius   :2rem;
+      border          : 1px solid transparent;
+      background      : #636363;
+      color           : #fff;
+      font-family: "Inter", sans-serif;
+
+      &:hover
+      {
+        background-color : #818181;
+        transition-delay : 3ms;
+      }
+    }
 
     .back-btn
     {
-      background  : none;
-      border      : none;
-      color       : #007aff;
-      display     : flex;
-      align-items : center;
-      font-size   : 0.92rem;
-      cursor      : pointer;
-      font-weight : 500;
-      font-family : "Inter", sans-serif;
+      border: 1px solid #007aff;
+      background-color : #007aff;
+      color: #fff;
+      border-radius   : 2rem;
+      padding         : 0.3rem 1.2rem;
+      display         : flex;
+      align-items     : center;
+      font-size       : 0.85rem;
+      cursor          : pointer;
+      font-weight     : 700;
+      font-family     : "Inter", sans-serif;
+      justify-content : space-between;
 
-      span
+      &:hover
       {
-        font-size   : 1rem;
-        font-weight : 900;
+        background-color : rgba(0, 122, 255, 0.7);
+        transition-delay : 3ms;
       }
+
     }
   }
 
@@ -284,7 +309,7 @@ $mdMobile: 768px;
     margin-bottom : 16px;
     background    : rgba(255, 255, 255, 1);
     padding       : 0.92rem;
-    border-radius : 12px;
+    border-radius : 0.5rem;
 
     .team-info
     {
@@ -299,14 +324,15 @@ $mdMobile: 768px;
 
     .sticker-grid
     {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-      gap: 8px;
-      justify-content: start;
+      display               : grid;
+      grid-template-columns : repeat(auto-fill, minmax(60px, 1fr));
+      gap                   : 8px;
+      justify-content       : start;
 
-      @media (max-width: $smMobile) {
-        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-        gap: 6px;
+      @media (max-width : $smMobile)
+      {
+        grid-template-columns : repeat(auto-fill, minmax(50px, 1fr));
+        gap                   : 6px;
       }
 
       .sticker-badge
@@ -320,7 +346,7 @@ $mdMobile: 768px;
         font-family     : "Inter", sans-serif;
         width           : 2rem;
         display         : flex;
-        justify-content: center;
+        justify-content : center;
 
       }
     }
