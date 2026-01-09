@@ -16,12 +16,20 @@ export class MenuModal {
 
   showMyStickers = false; // Controle de tela
   showDuplicatesModal = false;
+  showResetConfirm = false; // Controla a exibição do diálogo de confirmação
 
   constructor(public service: StickerService) {
   }
 
-  showResetConfirm = false; // Controla a exibição do diálogo de confirmação
+  handleClose() {
+    // Inicia a animação/lógica de fechar
+    this.closeMenu();
 
+    // Aguarda 300ms (o tempo da sua transition CSS) antes de sumir com os stickers
+    setTimeout(() => {
+      this.showMyStickers = false, this.showDuplicatesModal = false;
+    }, 10);
+  }
 
   // Impede que o clique dentro do modal feche o menu (propagação)
   stopProp(event: Event) {

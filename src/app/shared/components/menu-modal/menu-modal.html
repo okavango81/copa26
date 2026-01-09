@@ -4,9 +4,9 @@
 
   <div (click)="stopProp($event)" class="apple-modal">
     <div class="modal-header">
-<!--            <button (click)="closeMenu(); showMyStickers = false; showDuplicatesModal = false" class="close-btn">-->
-<!--              <span class="material-symbols-outlined">close</span>-->
-<!--            </button>-->
+      <!--            <button (click)="closeMenu(); showMyStickers = false; showDuplicatesModal = false" class="close-btn">-->
+      <!--              <span class="material-symbols-outlined">close</span>-->
+      <!--            </button>-->
     </div>
 
     <div class="modal-content">
@@ -31,7 +31,7 @@
             <button (click)="showMyStickers = false" class="back-btn">
               <span class="material-symbols-outlined"></span> Voltar
             </button>
-            <button (click)="showMyStickers = false; closeMenu()" class="closeMenu">
+            <button (click)="handleClose()" class="closeMenu">
               <span class="material-symbols-outlined"></span> Fechar
             </button>
           </div>
@@ -59,7 +59,7 @@
               <button (click)="showDuplicatesModal = false" class="back-btn">
                 <span class="material-symbols-outlined"></span>Voltar
               </button>
-              <button (click)="showMyStickers = false; closeMenu()" class="closeMenu">
+              <button (click)="handleClose()" class="closeMenu">
                 <span class="material-symbols-outlined"></span> Fechar
               </button>
             </div>
@@ -116,7 +116,7 @@
           <button (click)="showResetConfirm = true" class="menu-item"
                   [class.danger]="service.totalObtained() > 0"
                   [disabled]="service.totalObtained() < 1"
-                  >
+          >
             <span [class.noHas]="service.totalObtained() === 0">Apagar Álbum</span>
             <span class="material-symbols-outlined" [class.noHas]="service.totalObtained() === 0">delete</span>
           </button>
